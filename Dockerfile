@@ -39,6 +39,12 @@ ENV PATH "$HOME/.local/bin:${PATH}"
 
 RUN mkdir -p $HOME/.config/nvim $HOME/.SpaceVim.d
 
+# download elixir and erlang otp source code
+RUN mkdir -p /usr/local/share/src && \
+    cd /usr/local/share/src && \
+    git clone https://github.com/elixir-lang/elixir.git && \
+    git clone https://github.com/erlang/otp.git
+
 RUN pip install --user neovim pipenv
 
 RUN apt-get install -y zsh
