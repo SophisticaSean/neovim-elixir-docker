@@ -37,7 +37,7 @@ RUN cd /usr/src                                                 \
 
 ENV PATH "$HOME/.local/bin:${PATH}"
 
-RUN mkdir -p $HOME/.config/nvim $HOME/.SpaceVim.d
+RUN mkdir -p $HOME/.config/nvim/colors $HOME/.SpaceVim.d
 
 # download elixir and erlang otp source code
 RUN mkdir -p /usr/local/share/src && \
@@ -50,6 +50,7 @@ RUN pip install --user neovim pipenv
 RUN apt-get install -y zsh
 
 COPY ./nvimrc /root/.config/nvim/init.vim
+COPY ./srcery.vim /root/.config/nvim/colors/srcery.vim
 
 # install nvim plugin deps
 RUN curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh && \
